@@ -1,0 +1,291 @@
+
+/*基准样式*/
+body{
+	font-family:Georgia, "Times New Roman",serif;
+	margin:0 auto;
+	max-width:100em;
+	background:linear-gradient(white,blue);
+	opacity:.9;
+}
+*{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+a:focus {
+  outline: thin dotted;
+}
+
+a:active,
+a:hover {
+  outline: 0;
+  opacity:0.5;
+}
+a {
+  color: #1162a4;
+  text-decoration: none;
+}
+
+.logo{
+  font:5em "微软雅黑";
+  text-align: center;
+  color:cadetblue;
+  text-weight:bold;
+}
+
+/* ::: Main Navigation ::: */
+.nav{
+  border-bottom: 1px solid #c7c7c8;
+  border-top: 5px solid darkslateblue;
+  margin-top: 0;
+  padding: .45em 0 .5em;
+  background:#ccc;
+  
+ 
+}
+
+.nav a {
+  color: #292929;
+  font-size: 1.125em; /* 18px*/
+
+}
+
+.nav a:hover {
+  color: #029443;
+  text-decoration: none;
+}
+h1{
+	font-family:"Lato",sans-serif;
+	font-size:2.25em;
+	font-weight:300;
+}
+h2{
+	font-size:.875em;
+}
+
+img{
+	max-width:100%;
+	box-shadow:2px 1px 10px darkslateblue;
+	border-radius:50px/20px
+}
+/*min-width>320px*/
+@media only screen and (min-width: 20em) {
+  /* Masthead */
+  .nav li {
+    border-left: 1px solid #c8c8c8;
+    display: inline-block;
+    text-align: left;
+    font-size: 1em;
+    padding: 1.15em;
+    text-transform: uppercase;
+  }
+
+  .nav li:first-child {
+    border-left: none;
+  }
+
+  .nav li:last-child a {
+    padding-right: 0;
+  }
+ul li ul li:hover{background-color:darkslateblue;}
+
+
+  /* Sidebar */
+  .links {
+    width: 90%;
+  }
+}
+p{
+	text-align:justify;
+	text-indent:2em;
+	}
+@media only screen and (min-width: 48em) {
+  h1 {
+    font-size: 3.25em;
+  }
+
+  .nav{
+    margin-bottom: 0;
+    text-align:center;
+  }
+  header[role="banner"]{
+  	margin-bottom: 5em;
+}
+  /* Main Content */
+  .container {
+    background: url(../img/bg.png) repeat-y 65.938% 0;
+    padding-bottom: 1.9375em;
+  }
+
+  main {
+    float: left;
+    width: 62.5%;
+  }
+
+  main > .post:first-child > h1 {
+    margin-top: 0.904em;
+  }
+
+  .post-blurb p {
+    font-size: 1em;
+    line-height: 1.4;
+  }
+
+  .post-footer {
+    padding-bottom: .7em;
+    padding-top: .7em;
+  }
+
+  .footer p {
+    font-size: 0.688em;
+  }
+
+
+  /* Sidebar */
+  .sidebar {
+    float: right;
+    margin-top: 1.875em;
+    width: 34.5%;
+  }
+
+  .about p {
+    font-size: 0.813em;
+  }
+
+  /*Page Footer */
+  footer[role="contentinfo"] {
+    border-top: 1px solid #cacbcb;
+  }
+
+.nav ul{
+	list-style:none;
+	margin-left:0;
+	padding-left:0;
+	list-style-position:inside;
+}
+.nav ul li{
+	/*background:url(../img/small.jpg) no-repeat 0 .1em;*/
+	background:2em;
+	padding-left:1.75em;
+	line-height:1.8;
+	
+}
+.nav .subnav{
+	left:-999em;
+	position:absolute;
+	z-index:1000;
+	
+} 
+.nav li:hover .subnav{
+	left:auto;
+}
+.subnav li{
+	display:block;
+	border: 0;
+	}
+v    
+aside ul{
+	list-style:circle inside;
+}
+/*表单*/
+fieldset{
+	background-color: #f1f1f1;
+	border:none;
+	border-radius:2px;
+	margin-top:12px;
+	overflow:hidden;
+	padding:0 .625em;
+}
+.radios{
+	background-color:transparent;
+	margin-bottom:0;
+	margin-left:11em;
+	
+}
+fieldset h2{
+	background-color:#dedede;
+	border-bottom:1px solid #d4d4d4;
+	border-top:1px solid #d4d4d4;
+	border-radius:5px;
+	box-shadow:3px 3px 3px #ccc;
+	color:#fff;
+	margin:.8em;
+	padding:0.3em 1em;
+	text-shadow:#9ebeb9 1px 1px 1px;
+	text-transform:uppercase;
+}
+
+.hdr-count{background-color:#0b5586;}
+.hdr-address{background-color:#4494c9;}
+.hdr-public-profile{background-color:#377d87;}
+.hdr-emails{background-color:#717f88;}
+label{
+	cursor:pointer;
+	display:inline-block;
+	padding:.2em .4em;
+	text-align:right;
+	width:16em;
+	vertical-align: top;
+}
+label[for="email-ok-msg-from-users"],
+label[for="email-ok-occasional-updates"]
+{
+	width:40em;
+	text-align: left;
+}
+textarea{
+	font:inherit;
+	padding:1.5em;
+
+}
+.field-large{
+	width:18em;
+	}
+.instructions{
+	position:relative;
+	margin-left:12em;
+	}
+label[for="gender-male"],
+label[for="gender-female"]{
+	width:3em;
+	}
+input[type="submit"]{
+	margin:2em;
+	}
+/*表单*/
+/*table*/
+table{
+	border-collapse:collapse;
+	margin:2em;
+	}
+caption{
+	font-size:.8125em;
+	font-weight:bold;
+	margin-bottom:.5em;
+	}
+th,
+td{
+	font-size:.875em;
+	padding:.5em .75em;
+	}
+td{border:1px solid black;}
+tfoot{
+	font-style:italic;
+	font-weight:bold;
+	}
+video{
+	border:qpx solid darkslateblue;
+	margin-top:2em;
+}
+video[poster]{
+height:50%;
+width:50%;
+}
+img[src="http://jigsaw.w3.org/css-validator/images/vcss-blue"]{
+	border:0;
+	width:10%;
+	height:10%;
+}
+}
+/*table*/

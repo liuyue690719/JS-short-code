@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>HTML5 Media with Fallback Flash Player</title>
+	<script src="build/jquery.js"></script>
+	<script src="build/mediaelement-and-player.min.js"></script>
+	<link rel="stylesheet" href="build/mediaelementplayer.min.css" />
+	</head>
+	<body>
+		<video preload="metadata" controls>
+			<source src="1.mp4" type="video/mp4">
+			<source src="1.mp4" type="video/mp4">
+			<p>Your browser doesn't support HTMLL5 video or flash,
+				but you can <a href="1.mp4">download the video</a>(MP4,2.4 MB)</p>
+		</video>
+		<script>
+			$('video').mediaelementplayer();
+		</script>
+	</body>
+</html>
