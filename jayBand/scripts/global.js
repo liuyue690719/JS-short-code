@@ -1,32 +1,41 @@
+//a function for function call...
 function addLoadEvent(func){
-	var oldonload=window.onload;
+	var oldonload=window.onload;//store the event handler function in var oldonload
 	if (typeof window.onload !='function'){
-		window.onload=func;
+		window.onload=func;//bind a new function
 	} else{
 		window.onload=function(){
 			oldonload();
-			func();
+			func();//add a new function after oldonload()
 		}
 	}
-}
+}//run this when the docume vnt has been loaded
+
+
+//a function for inserting a new element after target element...
 function insertAfter(newElement,targetElement){
 	var parent=targetElement.parentNode;
 	if (parent.lastChild==targetElement){
-		parent.appendChild(newElement);
+		parent.appendChild(newElement);//append new element after target element
 	}else{
-		parent.insertBefore(newElement,targetElement.nextSibling);
+		parent.insertBefore(newElement,targetElement.nextSibling);//insert new element before the nextsibling of target element
 	}
 }
+
+//a function for adding new class property
 function addClass(element,value){
 	if (!element.className){
-		element.className=value;
+		element.className=value;//add
 	}else{
 		newClassName=element.className;
 		newClassName+=" ";
 		newClassName+=value;
-		element.className=newClassName;
+		element.className=newClassName;//append
 	}
 }
+
+
+//highlight navigation links for the current page
 function highlightPage(){
 	if (!document.getElementsByTagName) return false;
 	if (!document.getElementById) return false;
@@ -34,7 +43,7 @@ function highlightPage(){
 	if (headers.length==0) return false;
 	var navs=document.getElementsByTagName("nav");
 	if (navs.length==0) return false;
-	var links=navs[0].getElementsByTagName("a");
+	var links=navs[0].getElementsByTagName("a");//get the links
 	var linkurl;
 	for (var i=0;i<links.length;i++){
 		linkurl=links[i].getAttribute("href");
@@ -42,11 +51,13 @@ function highlightPage(){
 			links[i].className="here";
 			var linktext=links[i].lastChild.nodeValue.toLowerCase();
 			document.body.setAttribute("id",linktext);
-		}
+		}//add a class here，set the body id for the current page
 	}
 }
 addLoadEvent(highlightPage);
 
+
+//move element
 function moveElement(elementID,final_x,final_y,interval){
 	if (!document.getElementById) return false;
 	if (!document.getElementById(elementID)) return false;
@@ -85,9 +96,11 @@ function moveElement(elementID,final_x,final_y,interval){
 	elem.style.left=xpos+"px";
 	elem.style.top=ypos+"px";
 	var repeat = "moveElement('"+elementID+"',"+final_x+","+final_y+","+interval+")";
-	elem.movement=setTimeout(repeat,interval);
+	elem.movement=setTimeout(repeat,interval);//interval ms
 }
 
+
+//element slide show
 function prepareSlideshow(){
 	if (!document.getElementsByTagName) return false;
 	if (!document.getElementById) return false;
@@ -99,12 +112,12 @@ function prepareSlideshow(){
 	preview.setAttribute("src","./images/1.jpg");
 	preview.setAttribute("alt","building blocks of web design");
 	preview.setAttribute("id","preview");
-	slideshow.appendChild(preview);
+	slideshow.appendChild(preview);//add an image
 	insertAfter(slideshow,intro);
 	var links=intro.getElementsByTagName("a");
 	var destination;
 	for (var i=0;i<links.length;i++){
-	links[i].onmouseover=function(){
+	links[i].onmouseover=functiion(){
 		destination=this.getAttribute("href");
 		if (destination.indexOf("index.html")!=-1){
 		moveElement("preview",0,0,5);
@@ -126,6 +139,8 @@ function prepareSlideshow(){
 }
 addLoadEvent(prepareSlideshow);
 
+
+//add image and word as placeholder
 function preparePlaceholder(){
 	if (!document.createElement) return false;
 	if (!document.createTextNode) return false;
@@ -144,6 +159,7 @@ function preparePlaceholder(){
 	insertAfter(placeholder,description);
 }
 
+//Click on the link display and display the corresponding large image at the added image position.
 function prepareGallery(){
 	if (!document.getElementsByTagName) return false;
 	if (!document.getElementById) return false;
@@ -158,7 +174,7 @@ function prepareGallery(){
 	}
 }
 
-
+//show picture
 function showPic(whichpic){
 	if (!document.getElementById("placeholder")) return false;
 	var source=whichpic.getAttribute("href");
@@ -171,7 +187,7 @@ function showPic(whichpic){
 		var text="";
 	}
 	var description=document.getElementById("description");
-	if (description.firstChild.nodeType==3){
+	if (description.firstChild.nodeType==3){//wether textnode
 		description.firstChild.nodeValue=text;
 	}
 	return false
@@ -180,6 +196,8 @@ function showPic(whichpic){
 addLoadEvent(preparePlaceholder);
 addLoadEvent(prepareGallery);
 
+
+//mouseover bold the line
 function highlightRows(){
 	if(!document.getElementsByTagName)return false;
 	var rows=document.getElementsByTagName("tr");
@@ -194,6 +212,8 @@ function highlightRows(){
 }
 addLoadEvent(highlightRows);
 
+
+//display abbreviation tables
 function displayAbbreviations(){
 	var abbreviations=document.getElementsByTagName("abbr");
 	if (abbreviations.length<1)return false;
@@ -225,6 +245,8 @@ function displayAbbreviations(){
 }
 addLoadEvent(displayAbbreviations);
 
+
+//set color skipping for tables
 function stripeTables(){
 	if (!document.getElementsByTagName) return false;
 	var tables=document.getElementsByTagName("table");
@@ -243,6 +265,8 @@ function stripeTables(){
 }
 addLoadEvent(stripeTables);
 
+
+//focus on the label mouse onclick
 function focusLabels(){
 	if (!document.getElementsByTagName) return false;
 	var labels=document.getElementsByTagName("label");
@@ -258,6 +282,8 @@ function focusLabels(){
 }
 addLoadEvent(focusLabels);
 
+
+//delete and reset the paleholder
 function resetFields(form){
 	if (Modernizr.input.placeholder)return;
 	for (var i=0;i<whichform.elements.length;i++){
@@ -281,17 +307,21 @@ function resetFields(form){
 	}
 }
 
-
+//check whether form is empty/ or placeholder
 function isFilled(field){
 	if (field.value.replace(' ','').length==0)return false;//还有这！！
 	var placeholder=field.placeholder||field.getAttribute('placeholder');
 	return (field.value!=placeholder);
 }
 
+
+//check if the email address is reasonable
 function isEmail(field){
 	return (field.value.indexOf("@")!=-1&&field.value.indexOf(".")!=-1);//还有这里！
 }
 
+
+// use isfilled and isemail
 function validateForm(whichform){
 	for (var i=0;i<whichform.elements.length;i++){
 		var element=whichform.elements[i];
@@ -311,7 +341,7 @@ function validateForm(whichform){
 	return true;//怎么错在这里了！
 }
 
-
+//create http object
 function getHTTPObject(){
         if(typeof XMLHttpRequest == "undefined")
         	XMLhttpRequest = function(){
@@ -329,6 +359,8 @@ function getHTTPObject(){
         return new XMLHttpRequest();
     }
 
+
+//display loading gif
 function displayAjaxLoading(element){
 	while(element.hasChildNodes()){
 		element.removeChild(element.lastChild);
@@ -339,6 +371,7 @@ function displayAjaxLoading(element){
 	element.appendChild(content);
 }
 
+// submit form
 function submitFormWithAjax(whichform,thetarget){
 	var request=getHTTPObject();
 	if (!request){return false;}
@@ -370,6 +403,8 @@ function submitFormWithAjax(whichform,thetarget){
 	return true;
 };
 
+
+//call functions for submitting forms
 function prepareForms(){
 	for (var i=0;i<document.forms.length;i++){
 		var thisform=document.forms[i];
